@@ -73,7 +73,9 @@ section {
 .navbar__menu li {
     display: inline-block;
 }
-
+#navbar__list {
+    display: flex;
+}
 .navbar__menu .menu__link {
     display: block;
     padding: 1em;
