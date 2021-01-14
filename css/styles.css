@@ -65,13 +65,14 @@ section {
 
 /* Navigation Styles*/
 .navbar__menu ul {
+    display: inline-block;
     padding-left: 0;
     margin: 0;
-    text-align: right;
+    text-align: center;
 }
 
 .navbar__menu li {
-    display: inline-block;
+    display: block;
 }
 #navbar__list {
     display: flex;
