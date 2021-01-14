@@ -53,10 +53,12 @@ const offset = section =>{
 // Scroll to anchor ID using scrollTO event
 const remove = section =>{
     section.classList.remove('your-active-class')
+    section.style.cssText ='backgroundColor : linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);'
 }
 const add = (addClass ,section) =>{
     if(addClass){
         section.classList.add('your-active-class')
+        section.style.backgroundColor = 'Black'
 
     }
 }
@@ -64,7 +66,7 @@ const add = (addClass ,section) =>{
 const sectionActive = ()=>{
 sections.forEach(section=>{
     const offsetElement = offset(section)
-    port = ()=>offsetElement < 150 && offsetElement >= -150 ;
+    port = ()=>offsetElement < 100 && offsetElement >= -100 ;
     remove(section)
     add(port() ,section)
 })
