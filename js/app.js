@@ -71,17 +71,4 @@ sections.forEach(section=>{
     add(port() ,section)
 })
 }
-window.addEventListener('scroll',sectionActive)
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
+window.addEventListener('scroll' , sectionActive)
