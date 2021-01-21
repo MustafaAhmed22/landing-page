@@ -15,60 +15,67 @@
 
 /**
  * Define Global Variables
- * 
+ 
 */
 const navigationBar = document.querySelector('#navbar__list')
-const sections = document.querySelectorAll('section')
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
+const sections =Array.from(document.querySelectorAll('section')) 
 
 // build the nav
 
-let navSections ='';
-    sections.forEach(section =>{
-        
+let navSections =[];
+    for(section of sections){
         const sectionNav_set = section.dataset.nav;
         navSections += `<li><a class ='menu__link' href="#${section.id}">
         ${sectionNav_set}</a></li>`;
-    })
+    }
+
     navigationBar.innerHTML =navSections;
 
 
 
-// Add class 'active' to section when near top of viewport
-const offset = section =>{
-    return Math.floor(section.getBoundingClientRect().top)
-}
-// Scroll to anchor ID using scrollTO event
-const remove = section =>{
+function removeSectionActive(section){
     section.classList.remove('your-active-class')
-    section.style.cssText ='backgroundColor : linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);'
+    section.style.backgroundColor ='backgroundColor : linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);'
 }
-const add = (addClass ,section) =>{
-    if(addClass){
+
+function addSectionActive(addclass, section){
+    if(addclass){
         section.classList.add('your-active-class')
-        section.style.backgroundColor = 'Black'
-
+        section.style.backgroundColor = 'black'
     }
+
 }
 
-const sectionActive = ()=>{
+function viewPort(section){
+    return section.getBoundingClientRect().top >= 0
+    }
+    
+ let port = (offsetElement)=>offsetElement < 150 && offsetElement >= -150 ;
+/*
+function sectionActive (){
 sections.forEach(section=>{
-    const offsetElement = offset(section)
-    port = ()=>offsetElement < 100 && offsetElement >= -100 ;
-    remove(section)
-    add(port() ,section)
+    let offsetElement = viewPort(section)
+    port(offsetElement)
+
+    removeSectionActive(section)
+    addSectionActive(port(offsetElement) ,section)
 })
 }
-window.addEventListener('scroll' , sectionActive)
+*/
+function sectionActiveClass(){
+    for(section of sections){
+        var offsetElement = viewPort(section)
+        if(offsetElement){
+
+            if(!section.classList.contains('your-active-class')){
+                port(offsetElement)
+                    section.classList.add('your-active-class')
+               // addSectionActive(port(offsetElement) ,section)
+            }else{
+                section.classList.remove('your-active-class')
+               // removeSectionActive(section)
+            }
+        }
+    }
+}
+document.addEventListener('scroll' , sectionActiveClass)
