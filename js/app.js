@@ -25,12 +25,12 @@ const sections =Array.from(document.querySelectorAll('section'))
 let navSections =[];
     for(section of sections){
         const sectionNav_set = section.dataset.nav;
-        navSections += `<li><a class ='menu__link' href="#${section.id}">
+        const sectionId = section.id;
+        navSections += `<li><a class ='menu__link' href="#${sectionId}">
         ${sectionNav_set}</a></li>`;
     }
 
     navigationBar.innerHTML =navSections;
-
 
 
 function removeSectionActive(section){
