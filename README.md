@@ -14,3 +14,4 @@
 # how to use the project
 - open files using v.s code
 - open index.html using live server
+https://naughty-noyce-3c9a29.netlify.app
